@@ -1,6 +1,6 @@
 # Robust Margin-Based Classification
 
-This project comes from my master's thesis, *Robust Margin-Based Classification via Loss-Shifting*. I implemented and compared binary classifiers that use modified margin-based losses under asymmetric training-label noise.
+This project comes from my master's thesis, *Robust Margin-Based Classification via Loss-Shifting*. I wanted to see how shifting the loss changes a classifier’s accuracy when one class is more likely to be mislabeled than the other.
 
 ## Classifiers
 
@@ -8,9 +8,9 @@ The [R implementation](R/loss_shifting_v4.R) supports hinge, squared hinge, logi
 
 ## Simulation
 
-The [XOR experiment](xor.Rmd) generates two-dimensional training and test samples from four Gaussian clusters. The class depends on the signs of the cluster center coordinates. It flips a specified fraction of training labels within each class and leaves the test labels intact. The default experiment uses 200 training observations, 400 test observations, and 10 replications at each of five positive-class flip rates (0%, 5%, 10%, 15%, and 20%). The negative-class flip rate stays at zero.
+The [XOR experiment](xor.Rmd) generates two-dimensional training and test samples from four Gaussian clusters. The class depends on the signs of the cluster center coordinates. I flip a specified fraction of the training labels within each class, then measure accuracy on test data with the original labels. The default experiment uses 200 training observations, 400 test observations, and 10 replications at each of five positive-class flip rates (0%, 5%, 10%, 15%, and 20%). The negative-class flip rate stays at zero.
 
-The report compares unshifted, soft-shifted, and hard-shifted versions of the four losses. Benchmarks include a radial SVM (`e1071`), ridge logistic regression on features from a Gaussian kernel eigendecomposition (labeled `glm` in the original table), and the theoretical XOR sign rule. The output reports mean test accuracy and its across-replication standard deviation. This experiment uses fixed simulation seeds through the original driver.
+The report compares unshifted, soft-shifted, and hard-shifted versions of the four losses. Benchmarks include a radial SVM (`e1071`), ridge logistic regression on features from a Gaussian kernel eigendecomposition (labeled `glm` in the original table), and the theoretical XOR sign rule. For each noise setting, the report gives the mean and standard deviation of test accuracy across replications. The simulation uses fixed seeds.
 
 ## How to run
 
@@ -27,7 +27,7 @@ The full grid performs 50 replications across the five noise settings, with cros
 Rscript -e 'Sys.setenv(LOSS_SHIFT_QUICK="1", LOSS_SHIFT_WORKERS="1"); rmarkdown::render("xor.Rmd")'
 ```
 
-A single replication estimates no across-replication variation. The original table formatter reports 0 in the standard-deviation column in that case. The runner and core implementation were reviewed statically. Neither the short nor the full experiment has been rerun for this portfolio. The simulation table is generated on demand.
+In the one-replication run, the table prints `0` for the standard deviation as a formatting convention. Use the full run to see how accuracy varies across replications. I haven’t rerun either version since updating the report.
 
 ## Original source
 
