@@ -12,6 +12,6 @@ download.file(
 )
 ```
 
-The file has the columns `일시` (year and month, for example `1998년 1월`) and `강수량(mm)` (total precipitation in millimeters). The original report reads it as EUC-KR. For a UTF-8 copy with the same headers, set `RAINFALL_ENCODING=UTF-8` in the environment before rendering.
+The file has the columns `일시` (year and month, for example `1998년 1월`) and `강수량(mm)` (total precipitation in millimeters). The archived GitHub file is encoded as UTF-8, which the portfolio report uses by default. For a local EUC-KR copy with the same headers, set `RAINFALL_ENCODING=EUC-KR` in the environment before rendering.
 
 The [Korea Meteorological Administration ASOS portal](https://data.kma.go.kr/data/grnd/selectAsosList.do?pgmNo=36) also offers monthly precipitation records for Gangneung (station 105). A fresh download may differ from the archived course CSV.

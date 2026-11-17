@@ -51,9 +51,9 @@ theme_set(
 #### 1) 파일 경로 -----------------------------------------------------------
 in_path <- file.path("data", "gangneung-monthly.csv")
 if (!file.exists(in_path)) stop("See data/README.md for the course CSV.")
-csv_encoding <- Sys.getenv("RAINFALL_ENCODING", unset = "EUC-KR")
+csv_encoding <- Sys.getenv("RAINFALL_ENCODING", unset = "UTF-8")
 
-#### 2) CSV 읽기 (EUC-KR) ---------------------------------------------------
+#### 2) Read the rainfall CSV ---------------------------------------------------
 df_raw <- readr::read_csv(
   file   = in_path,
   locale = locale(encoding = csv_encoding),
