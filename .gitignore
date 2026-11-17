@@ -1,0 +1,13 @@
+.DS_Store
+.Rhistory
+.RData
+.Rproj.user/
+.Renviron
+.env
+.venv/
+__pycache__/
+.ipynb_checkpoints/
+/01-Rainfall-Analysis/data/*.csv
+/01-Rainfall-Analysis/rainfall.html
+/02-Robust-Classification/xor.html
+/02-Robust-Classification/xorffinal.csv
